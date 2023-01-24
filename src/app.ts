@@ -20,10 +20,14 @@ const middle = (req: Request, res: Response, next: Function): void => {
 };
 
 // app.use(middle)
-app.get('/hey', middle, (req, res) => {
+app.get('/hey', middle, (req: Request, res: Response) => {
   res.send('Hey from Express!');
 });
 
+app.get('/', (req, res) => {
+  res.redirect('/hey');
+});
+
 app.listen(port, () => {
-  console.log(`listening on http://localhost/${port}`);
+  console.log(`listening on http://localhost:${port}`);
 });
